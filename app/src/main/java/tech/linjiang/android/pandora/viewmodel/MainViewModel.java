@@ -16,7 +16,6 @@ import tech.linjiang.android.pandora.db.entity.Drink;
 import tech.linjiang.android.pandora.net.ApiService;
 import tech.linjiang.android.pandora.utils.AssetUtil;
 import tech.linjiang.android.pandora.utils.ThreadPool;
-import tech.linjiang.pandora.util.FileUtil;
 
 public class MainViewModel extends AndroidViewModel {
 
@@ -139,10 +138,10 @@ public class MainViewModel extends AndroidViewModel {
 
     public void makeNewFile() {
         ThreadPool.post(() -> {
-            String name = getRandomStr(4);
-            String content = getRandomStr(128);
-            String path = FileUtil.saveFile(content.getBytes(), name, "txt");
-            fileResult.postValue(path);
+//            String name = getRandomStr(4);
+//            String content = getRandomStr(128);
+//            String path = FileUtil.saveFile(content.getBytes(), name, "txt");
+//            fileResult.postValue(path);
         });
     }
 }

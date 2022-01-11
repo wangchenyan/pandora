@@ -1,5 +1,7 @@
 package tech.linjiang.android.pandora.net;
 
+import java.util.Objects;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -26,7 +28,7 @@ public class ApiService {
                 .baseUrl("https://httpbin.org")
                 .client(
                         new OkHttpClient.Builder()
-                        .addInterceptor(Pandora.get().getInterceptor())
+                        .addInterceptor(Objects.requireNonNull(Pandora.get().getInterceptor()))
                         .build()
                 )
                 .addConverterFactory(GsonConverterFactory.create())

@@ -1,2 +1,3 @@
-include ':app', ':pandora-core'
-include ':pandora-plugin'
+include ':app'
+include ':pandora'
+include ':pandora-noop'

@@ -38,7 +38,7 @@ public class RemoteService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "onCreate: ");
-        Pandora.get().open();
+        Pandora.get().toggle();
     }
 
     @Override

@@ -1,6 +1,9 @@
 package tech.linjiang.android.pandora.ui;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProviders;
+
+import android.app.Application;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -8,7 +11,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.browser.customtabs.CustomTabsIntent;
-import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import tech.linjiang.android.pandora.R;
 import tech.linjiang.android.pandora.viewmodel.MainViewModel;
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             toast(getString(R.string.pandora_shake_please));
         });
         findViewById(R.id.btn_open).setOnClickListener(v -> {
-            Pandora.get().open();
+            Pandora.get().toggle();
         });
         findViewById(R.id.btn_net_okhttp).setOnClickListener(v -> {
             viewModel.doOKHttp();
@@ -163,8 +167,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public boolean onClick() {
+        public boolean onClick(@NonNull Application app) {
             toast("I am the custom Function.");
+            return false;
+        }
+
+        @Override
+        public boolean needCleanWidgets() {
             return false;
         }
     };
